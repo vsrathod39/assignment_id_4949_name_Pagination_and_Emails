@@ -1,0 +1,27 @@
+{
+  "name": "assignment_id_4949_name_Pagination_and_Emails",
+  "version": "1.0.0",
+  "description": "Pagination and Emails",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vsrathod39/assignment_id_4949_name_Pagination_and_Emails.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vsrathod39/assignment_id_4949_name_Pagination_and_Emails/issues"
+  },
+  "homepage": "https://github.com/vsrathod39/assignment_id_4949_name_Pagination_and_Emails#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.1.2",
+    "nodemailer": "^6.7.2"
+  }
+}

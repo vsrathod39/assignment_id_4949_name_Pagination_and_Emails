@@ -9,13 +9,12 @@ router.post("/", async (req, res) => {
     try {
         const item = await User.create(req.body);
         const admins = await Admin.find({}, {email: 1, _id: 0}).lean().exec();
-        const adminsEmail = admins.map(({email}) => email);
-        // console.log(admisEmail);
+        let adminsEmail = admins.map(({email}) => email);
+        adminsEmail = adminsEmail.join(",");
+        // console.log(adminsEmail);
         sendMail("master@abc.system", req.body.email, `Welcome to ABC system ${req.body.first_name} ${req.body.last_name}`, `Hi ${req.body.first_name}, Please confirm your email address`, `<p>Hi </p>${req.body.first_name}, <p>Please confirm your email address</p>`);
 
-        adminsEmail.forEach((email) => {
-            sendMail("master@abc.system", email, `${req.body.first_name} ${req.body.last_name} has registered with us`, `Please welcome ${req.body.first_name} ${req.body.last_name}`, `<p>Please welcome ${req.body.first_name} ${req.body.last_name},</p>`);
-        })
+        sendMail("master@abc.system", adminsEmail, `${req.body.first_name} ${req.body.last_name} has registered with us`, `Please welcome ${req.body.first_name} ${req.body.last_name}`, `<p>Please welcome ${req.body.first_name} ${req.body.last_name},</p>`);
 
         return res.status(201).send({item});
     } catch (error) {
